@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Flat(models.Model):
@@ -57,6 +58,10 @@ class Flat(models.Model):
         related_name='liked_flats',
         verbose_name='Кто лайкнул',
         default=None,
+        blank=True,
+        null=True)
+    owner_pure_phone = PhoneNumberField(
+        'Нормализованный номер владельца',
         blank=True,
         null=True)
     
