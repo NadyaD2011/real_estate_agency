@@ -71,13 +71,12 @@ class Complaint(models.Model):
         related_name="complaint_flats",
         verbose_name="Квартира, на которую жаловались",
         null=True,
-        on_delete=models.SET_NULL)
-    complaint_text = models.TextField(
-        'Текст жалобы')
+        on_delete=models.SET_NULL,
+    )
+    text = models.TextField("Текст жалобы")
 
     def __str__(self):
-        return f'Жалоба {self.user} на квартиру {self.complaint_flat}'
-    
+        return f"Жалоба {self.user} на квартиру {self.flat}"
 
 
 class Owner(models.Model):
