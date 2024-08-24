@@ -4,23 +4,22 @@ from django.db import migrations
 
 
 def fill_owners_flats(apps, schema_editor):
-    Flat = apps.get_model('property', 'Flat')
-    Owner = apps.get_model('property', 'Owner')
+    Flat = apps.get_model("property", "Flat")
+    Owner = apps.get_model("property", "Owner")
 
     for flat in Flat.objects.all():
         owner, created = Owner.objects.get_or_create(
             owner=flat.owner,
             phonenumber=flat.owners_phonenumber,
-            owner_pure_phone=flat.owner_pure_phone)
+            owner_pure_phone=flat.owner_pure_phone,
+        )
         owner.flats.set([flat.id])
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('property', '0013_auto_20240822_1949'),
+        ("property", "0013_auto_20240822_1949"),
     ]
 
-    operations = [
-        migrations.RunPython(fill_owners_flats)
-    ]
+    operations = [migrations.RunPython(fill_owners_flats)]

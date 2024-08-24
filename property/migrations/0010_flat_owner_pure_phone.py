@@ -7,13 +7,19 @@ import phonenumber_field.modelfields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('property', '0009_flat_liked_by'),
+        ("property", "0009_flat_liked_by"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='flat',
-            name='owner_pure_phone',
-            field=phonenumber_field.modelfields.PhoneNumberField(blank=True, max_length=128, null=True, region=None, verbose_name='Нормализованный номер владельца'),
+            model_name="flat",
+            name="owner_pure_phone",
+            field=phonenumber_field.modelfields.PhoneNumberField(
+                blank=True,
+                max_length=128,
+                null=True,
+                region=None,
+                verbose_name="Нормализованный номер владельца",
+            ),
         ),
     ]
