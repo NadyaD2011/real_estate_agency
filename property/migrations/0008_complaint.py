@@ -9,17 +9,43 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('property', '0007_auto_20240816_1629'),
+        ("property", "0005_auto_20240816_1621"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Complaint',
+            name="Complaint",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('complaint_text', models.TextField(verbose_name='Текст жалобы')),
-                ('complaint_flat', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='flats', to='property.Flat', verbose_name='Квартира, на которую жаловались')),
-                ('user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='complaints', to=settings.AUTH_USER_MODEL, verbose_name='Кто жаловался')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("complaint_text", models.TextField(verbose_name="Текст жалобы")),
+                (
+                    "complaint_flat",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="flats",
+                        to="property.Flat",
+                        verbose_name="Квартира, на которую жаловались",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="complaints",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Кто жаловался",
+                    ),
+                ),
             ],
         ),
     ]
