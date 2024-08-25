@@ -31,7 +31,7 @@ class ComplaintAdmin(admin.ModelAdmin):
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ["flats"]
     list_display = [
-        "owner",
+        "user",
         "pure_phone",
     ]
 
