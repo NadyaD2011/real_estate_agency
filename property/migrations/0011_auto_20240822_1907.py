@@ -20,9 +20,9 @@ def format_phonenumber(phone):
 
 def fill_owner_pure_phone(apps, schema_editor):
     Flat = apps.get_model("property", "Flat")
-    flats = Flat.iterator()
+    flats = Flat.objects.all()
     
-    for flat in flats:
+    for flat in flats.iterator():
         flat.owner_pure_phone = format_phonenumber(flat.owners_phonenumber)
         flat.save()
 
